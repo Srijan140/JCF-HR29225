@@ -1,0 +1,49 @@
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+
+# Certificate details
+name = "Amit Kumar Srivastava"
+role = "Human Resources (HR)"
+membership_id = "JCF - HR29225"
+start_date = "07 August 2024"
+end_date = "07 November 2024"
+hours_completed = "360 Hours"
+signatory = "Ms. Priyanka Joshi"
+position = "Co-Founder/Chairman"
+
+# PDF file name
+file_name = "Internship_Certificate_Amit_Kumar_Srivastava.pdf"
+
+# Create PDF
+c = canvas.Canvas(file_name, pagesize=A4)
+width, height = A4
+
+# Adding the logo (placeholder for logo image)
+# Assuming logo.png is in the same directory
+# Uncomment the line below if you have a logo image to add
+# c.drawImage("logo.png", x=width/2 - inch, y=height - inch * 1.5, width=2*inch, height=1*inch)
+
+# Title
+c.setFont("Helvetica-Bold", 20)
+c.drawCentredString(width / 2, height - 1.5 * inch, "Certificate of Internship Completion")
+
+# Body
+c.setFont("Helvetica", 12)
+c.drawString(1 * inch, height - 2.5 * inch, f"Name: {name}")
+c.drawString(1 * inch, height - 3 * inch, f"Role: {role}")
+c.drawString(1 * inch, height - 3.5 * inch, f"Membership ID: {membership_id}")
+c.drawString(1 * inch, height - 4 * inch, f"Internship Period:")
+c.drawString(1.5 * inch, height - 4.5 * inch, f"Start Date: {start_date}")
+c.drawString(1.5 * inch, height - 5 * inch, f"End Date: {end_date}")
+c.drawString(1 * inch, height - 5.5 * inch, f"Hours Completed: {hours_completed}")
+
+# Signature section
+c.drawString(1 * inch, height - 6.5 * inch, "Issued By:")
+c.drawString(1.5 * inch, height - 7 * inch, f"{signatory}")
+c.drawString(1.5 * inch, height - 7.5 * inch, f"{position}")
+
+# Save PDF
+c.save()
+
+print(f"Certificate saved as {file_name}")
